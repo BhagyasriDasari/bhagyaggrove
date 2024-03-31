@@ -1,6 +1,6 @@
 import React from 'react';
 import RecommendedEvents from '../RecommendedEvents';
-import UpcomingEvents from '../UpcomingEvents';
+import UpcomingEvents from '../Upcomingevents';
 
 const Banner = () => {
   return (

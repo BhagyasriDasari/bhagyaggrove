@@ -20,36 +20,7 @@ const RecommendedEvents = () => {
     setShowAll(!showAll);
   };
 
-  const images = [
-    {
-      id: 1,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890246/Rectangle_34_g05kuj.svg'
-    },
-    {
-      id: 2,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890243/Rectangle_2_kf1ynr.svg'
-    },
-    {
-      id: 3,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890242/Rectangle_4-1_ts4woa.svg'
-    },
-    {
-      id: 4,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890239/Rectangle_5-1_psaqvk.svg'
-    },
-    {
-      id: 5,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890221/Rectangle_4_panwpe.svg'
-    },
-    {
-      id: 6,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890218/Rectangle_5-2_yzo32h.svg'
-    },
-    {
-      id: 7,
-      url: 'https://res.cloudinary.com/ddnpmhq8v/image/upload/v1711890218/Rectangle_5_znhhof.svg'
-    }
-  ];
+
 
   
   return (

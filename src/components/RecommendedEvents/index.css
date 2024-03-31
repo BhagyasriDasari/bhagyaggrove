@@ -1,0 +1,26 @@
+.recommended-events-container {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .event-card {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+  
+  .event-image {
+    width: 200px; /* Adjust image width as needed */
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .event-details {
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  

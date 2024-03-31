@@ -23,4 +23,24 @@
   button {
     margin-top: 10px;
   }
+
+  .recommended-heading{
+    color: #ffffff;
+  }
+  
+  .recommended-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .see-all-btn {
+    
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+  }
   

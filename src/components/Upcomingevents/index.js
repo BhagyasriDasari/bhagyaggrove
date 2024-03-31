@@ -1,57 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import LoadingSpinner from '../LoadingSpinner';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import './index.css';
 
 const UpcomingEvents = () => {
   const [events, setEvents] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [fetching, setFetching] = useState(false);
-
-  const fetchUpcomingEvents = async () => {
-    try {
-      setFetching(true);
-      const response = await axios.get(`https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=${page}&type=upcoming`);
-      const newEvents = response.data || []; // Initialize as an empty array if response.data is undefined
-      if (Array.isArray(newEvents)) {
-        setEvents(prevEvents => [...prevEvents, ...newEvents]);
-        setPage(prevPage => prevPage + 1);
-      } else {
-        console.error('Error fetching upcoming events: Response data is not an array');
-      }
-      setFetching(false);
-    } catch (error) {
-      console.error('Error fetching upcoming events:', error);
-      setFetching(false);
-    }
-  };
-  
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    fetchUpcomingEvents();
+    axios.get('https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=1&type=upcoming') 
+      .then(response => {
+        setEvents(response.data.events);
+      })
+      .catch(error => {
+        console.error('Error fetching upcoming events:', error);
+      });
   }, []);
 
-  const loadMoreEvents = () => {
-    if (!fetching) {
-      fetchUpcomingEvents();
-    }
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
   };
 
   return (
     <section className="upcoming-events">
-      <h2>Upcoming Events</h2>
+      <div className="upcoming-header">
+        <h2 className='upcoming-heading'>Upcoming Events</h2>
+        <button onClick={toggleShowAll} className="see-all-btn">See All</button>
+      </div>
       <div className="upcoming-events-container">
-        <InfiniteScroll
-          dataLength={events.length}
-          next={loadMoreEvents}
-          hasMore={hasMore}
-          loader={<LoadingSpinner />}
-          scrollThreshold={0.9} // Load more when 90% of the page is scrolled
-        >
-          {/* Map through events and render event cards */}
-        </InfiniteScroll>
+        {events.slice(0, showAll ? events.length : 10).map(event => (
+          <div key={event.eventName} className="event-card">
+            <img src={event.imgUrl} alt={event.eventName} className="event-image" />
+           
+            <div className="event-details">
+              <h3>{event.eventName}</h3>
+              <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+              <p>City: {event.cityName}</p>
+              <p>Weather: {event.weather}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

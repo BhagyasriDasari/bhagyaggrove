@@ -1,15 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
-import RecommendedEvents from './components/RecommendedEvents';
-import UpcomingEvents from './components/Upcomingevents'
+import Banner from './components/Banner';
 
 const App = () => {
   return (
     <div>
       <Header />
       <main>
-        <RecommendedEvents />
-        <UpcomingEvents />
+        <Banner/>
       </main>
      
     </div>
